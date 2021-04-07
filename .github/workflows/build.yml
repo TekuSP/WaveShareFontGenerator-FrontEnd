@@ -13,7 +13,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: checkout submodule
+    - name: Checkout Submodules
       run: |
         git submodule init
         git submodule update
