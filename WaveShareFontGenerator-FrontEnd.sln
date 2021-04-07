@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31129.286
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WaveShareFontGenerator-FrontEnd", "WaveShareFontGenerator-FrontEnd\WaveShareFontGenerator-FrontEnd.csproj", "{C07C7C51-232E-415D-9C89-FE0A473BE252}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C07C7C51-232E-415D-9C89-FE0A473BE252}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C07C7C51-232E-415D-9C89-FE0A473BE252}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C07C7C51-232E-415D-9C89-FE0A473BE252}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C07C7C51-232E-415D-9C89-FE0A473BE252}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {089F0701-092E-4EAF-AB02-DEA6E1EFBB80}
+	EndGlobalSection
+EndGlobal
