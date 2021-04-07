@@ -4,18 +4,44 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WaveShareFontGenerator_FrontEnd"
-        mc:Ignorable="d"
-        Title="WaveShare E-Paper Font Generator" Height="450" Width="800">
+        mc:Ignorable="d" DataContext="{Binding RelativeSource={RelativeSource Self}}"
+        Title="WaveShare E-Paper Font Generator" Height="450" Width="1150">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50px"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal" Grid.Row="0">
-            <Button x:Name="open" Margin="5">OPEN FONT FILE</Button>
-            <TextBlock VerticalAlignment="Center">Fonts:</TextBlock>
-            <ComboBox Width="200px" Margin="5,15,15,15"></ComboBox>
-            <Button x:Name="generate" Margin="5">GENERATE WaveShare C++</Button>
-        </StackPanel>
+        <Border Grid.Row="0" BorderThickness="1" BorderBrush="Black">
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="open" Margin="5">OPEN FONT FILE</Button>
+                <TextBlock VerticalAlignment="Center">Fonts:</TextBlock>
+                <ComboBox x:Name="knownFonts" Width="200px" Margin="5,12,12,12" Loaded="knownFonts_Loaded" ItemsSource="{Binding KnownFonts, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Value" SelectedValuePath="Key"></ComboBox>
+                <StackPanel Orientation="Horizontal" Margin="5">
+                    <Label VerticalAlignment="Center">Font width (bytes):</Label>
+                    <TextBox PreviewTextInput="VerifyNumber" x:Name="fontWidth" Width="25px" VerticalAlignment="Center">2</TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="5">
+                    <Label VerticalAlignment="Center">Font height (lines):</Label>
+                    <TextBox PreviewTextInput="VerifyNumber" x:Name="fontHeight" Width="25px" VerticalAlignment="Center">24</TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="5">
+                    <Label VerticalAlignment="Center">Font size (ppem):</Label>
+                    <TextBox PreviewTextInput="VerifyNumber" Width="25px" x:Name="fontSize" VerticalAlignment="Center">20</TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="5">
+                    <Label VerticalAlignment="Center">X offset:</Label>
+                    <TextBox PreviewTextInput="VerifyNumber" Width="25px" x:Name="xOffset" VerticalAlignment="Center">0</TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="5">
+                    <Label VerticalAlignment="Center">Y offset:</Label>
+                    <TextBox PreviewTextInput="VerifyNumber" Width="25px" x:Name="yOffset" VerticalAlignment="Center">18</TextBox>
+                </StackPanel>
+                <Button x:Name="generate" Margin="5" Click="generate_Click">GENERATE</Button>
+                <Button x:Name="save" Margin="5">SAVE</Button>
+            </StackPanel>
+        </Border>
+        <ScrollViewer Grid.Row="1">
+            <TextBlock HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" x:Name="previewContent"></TextBlock>
+        </ScrollViewer>
     </Grid>
 </Window>
