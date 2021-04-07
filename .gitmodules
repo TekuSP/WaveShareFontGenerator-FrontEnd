@@ -1,0 +1,3 @@
+[submodule "waveshareFontGenerator-CLI"]
+	path = waveshareFontGenerator-CLI
+	url = https://github.com/ekle/waveshareFontGenerator.git
