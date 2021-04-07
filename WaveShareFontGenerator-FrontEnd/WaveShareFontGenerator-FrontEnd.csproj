@@ -7,4 +7,17 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Include="..\GoLangLibraries\waveshareFontGenerator-CLI.exe" Link="CLI\waveshareFontGenerator-CLI.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\waveshareFontGenerator-CLI\LICENSE" Link="CLI\LICENSE-CLI">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="CLI\" />
+  </ItemGroup>
+
 </Project>

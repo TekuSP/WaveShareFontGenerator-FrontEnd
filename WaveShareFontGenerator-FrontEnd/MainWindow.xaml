@@ -5,8 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WaveShareFontGenerator_FrontEnd"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="WaveShare E-Paper Font Generator" Height="450" Width="800">
     <Grid>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50px"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Grid.Row="0">
+            <Button x:Name="open" Margin="5">OPEN FONT FILE</Button>
+            <TextBlock VerticalAlignment="Center">Fonts:</TextBlock>
+            <ComboBox Width="200px" Margin="5,15,15,15"></ComboBox>
+            <Button x:Name="generate" Margin="5">GENERATE WaveShare C++</Button>
+        </StackPanel>
     </Grid>
 </Window>
