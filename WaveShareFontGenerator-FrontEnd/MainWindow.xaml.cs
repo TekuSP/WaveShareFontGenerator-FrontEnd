@@ -1,4 +1,6 @@
-﻿using SlavaGu.ConsoleAppLauncher;
+﻿using Microsoft.Win32;
+
+using SlavaGu.ConsoleAppLauncher;
 
 using System;
 using System.Collections.Generic;
@@ -68,6 +70,55 @@ namespace WaveShareFontGenerator_FrontEnd
         private void VerifyNumber(object sender, TextCompositionEventArgs e)
         {
             e.Handled = _regex.IsMatch(e.Text);
+        }
+
+        private void save_Click(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog
+            {
+                AddExtension = true,
+                Filter = "C++ file (*.cpp)|*.cpp",
+                Title = "Save generated font",
+                CheckPathExists = true,
+                OverwritePrompt = true
+            };
+            if (saveFileDialog.ShowDialog().GetValueOrDefault())
+            {
+                File.WriteAllText(saveFileDialog.FileName, previewContent.Text);
+            }
+        }
+
+        private void open_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog()
+            {
+                AddExtension = true,
+                Filter = "TTF Font file (*.ttf)|*.ttf",
+                CheckFileExists = true,
+                CheckPathExists = true,
+                ReadOnlyChecked = true,
+                ShowReadOnly = true,
+                Title = "Select font file"
+            };
+            if (openFileDialog.ShowDialog().GetValueOrDefault())
+            {
+                PrivateFontCollection fonts = new PrivateFontCollection();
+                fonts.AddFontFile(openFileDialog.FileName);
+                if (!PrivateFontCollection.Families.Any(x => x.Name == fonts.Families.First().Name))
+                {
+                    KnownFonts.Add(openFileDialog.FileName, fonts.Families.First().Name);
+                    PrivateFontCollection.AddFontFile(openFileDialog.FileName);
+                    this.knownFonts.SelectedItem = KnownFonts.Last();
+                }
+                else
+                {
+                    var where = KnownFonts.Where(x => x.Value == fonts.Families.First().Name);
+                    if (where.Any())
+                    {
+                        this.knownFonts.SelectedItem = where.First();
+                    }
+                }
+            }
         }
     }
 }
